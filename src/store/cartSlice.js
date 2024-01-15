@@ -3,8 +3,6 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   items: [],
   totalQuantity: 0,
-  cartIsVisible: false,
-  notification: null,
   changed: false
 };
 
@@ -45,16 +43,6 @@ const cartSlice = createSlice({
         existingItem.totalPrice -= existingItem.price;
       }
       state.totalQuantity--;
-    },
-    toggleCart(state) {
-      state.cartIsVisible = !state.cartIsVisible;
-    },
-    showNotification(state, action) {
-      state.notification = {
-        status: action.payload.status,
-        title: action.payload.title,
-        message: action.payload.message,
-      };
     },
   },
 });

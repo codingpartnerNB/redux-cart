@@ -1,9 +1,10 @@
 import { cartActions } from "./cartSlice";
+import { uiActions } from "./uiSlice";
 
 export const sendCartData = (cart)=>{
     return async (dispatch)=>{
       dispatch(
-        cartActions.showNotification({
+        uiActions.showNotification({
           status: "Pending",
           title: "Sending...",
           message: "Sending cart data!",
@@ -25,7 +26,7 @@ export const sendCartData = (cart)=>{
       try{
         await sendRequest();
         dispatch(
-          cartActions.showNotification({
+          uiActions.showNotification({
             status: "Success",
             title: "Success!",
             message: "Sent cart data successfully!",
@@ -33,7 +34,7 @@ export const sendCartData = (cart)=>{
         );
       }catch(error){
         dispatch(
-          cartActions.showNotification({
+          uiActions.showNotification({
             status: "Error",
             title: "Error!",
             message: "Sending cart data failed!",
@@ -62,7 +63,7 @@ export const fetchCartData = ()=>{
             }));
         }catch(error) {
             dispatch(
-                cartActions.showNotification({
+                uiActions.showNotification({
                   status: "Error",
                   title: "Error!",
                   message: "Fetching cart data failed!",
